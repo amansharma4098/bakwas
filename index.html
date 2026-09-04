@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stableware™ — Reliability. Eventually.</title>
+<title>AI Studio™ — Reliability. Eventually.</title>
 <style>
   :root{
     --bg:#0b0d12;
@@ -50,6 +50,13 @@
 
   /* HERO */
   header.hero{padding:90px 24px 60px;text-align:center;position:relative;}
+  .confession{
+    max-width:640px;margin:0 auto 32px;background:repeating-linear-gradient(45deg,#3a2f0f,#3a2f0f 10px,#332a0d 10px,#332a0d 20px);
+    border:2px dashed var(--yellow);border-radius:10px;padding:16px 22px;text-align:left;
+    color:#ffe9a8;font-size:13.5px;transform:rotate(-0.6deg);box-shadow:0 8px 20px rgba(0,0,0,.35);
+  }
+  .confession b{color:var(--yellow);}
+  .confession p{margin:6px 0 0;}
   .badge{
     display:inline-flex;align-items:center;gap:8px;background:var(--card);
     border:1px solid var(--border);padding:6px 14px;border-radius:999px;
@@ -211,7 +218,7 @@
 
 <nav>
   <div class="logo" id="logoClick">
-    <span class="dot"></span> Stableware<span style="color:var(--muted);font-weight:400;">™</span>
+    <span class="dot"></span> AI Studio<span style="color:var(--muted);font-weight:400;">™</span>
   </div>
   <div class="links">
     <a href="#status">Status</a>
@@ -226,6 +233,10 @@
 </nav>
 
 <header class="hero">
+  <div class="confession">
+    <b>📌 NOTE —</b> Actully we just using open sourse Free LLm Apis in our platform, nothing is increadble in this.
+    <p>Also: we do not have users. We just working on demos.</p>
+  </div>
   <div class="badge">🔴 <b>Live incident</b> — ongoing since 2022 · <span id="daysBadge">1,461</span> days and counting</div>
   <h1 class="hero-title">👋 Hey, welcome!<br>We're currently facing <span>some issues</span>.</h1>
   <p class="sub">Nothing serious — just a small hiccup that started about 4 years ago. Our team of 12x engineers is
@@ -246,8 +257,8 @@
       <div class="label">Open Support Ticket (same one)</div>
     </div>
     <div class="counter">
-      <div class="num" id="usersCounter">3</div>
-      <div class="label">Active Users (incl. founder's mom)</div>
+      <div class="num" id="usersCounter">0</div>
+      <div class="label">Active Users (just demos, honestly)</div>
     </div>
   </div>
 
@@ -490,7 +501,7 @@
     <a href="#" onclick="reportIssue();return false;">Careers</a>
     <a href="#status">Status Page</a>
   </div>
-  <p>© <span id="year"></span> Stableware™ Inc. All rights reserved, whatever those are.<br>Made with ❤️ and duct tape.</p>
+  <p>© <span id="year"></span> AI Studio™ Inc. All rights reserved, whatever those are.<br>Made with ❤️ and duct tape (and a few free-tier API keys).</p>
 </footer>
 
 <div id="toast"></div>
