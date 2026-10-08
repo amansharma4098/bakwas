@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bakwas",
+  "account_id": "43d392f1d7c9c09fc2ebef7db6ee8bc5",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-08",
+  "workers_dev": true,
+  "preview_urls": false,
+  "build": { "command": "npm run build" },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bakwas-reviews",
+      "database_id": "1dfb1a6a-3c48-4143-9411-4f789029f4e8",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": { "enabled": true, "logs": { "enabled": true, "invocation_logs": false } }
+}
