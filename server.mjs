@@ -29,6 +29,7 @@ export function createApp({
     );
   `);
   const html = readFileSync(resolve(root, 'index.html'));
+  const teamHtml = readFileSync(resolve(root, 'team.html'));
   const origin = publicOrigin ? new URL(publicOrigin).origin : null;
   const moderationHash = moderationToken ? hash(moderationToken) : null;
   const limits = new Map();
@@ -95,6 +96,11 @@ export function createApp({
       if (['GET', 'HEAD'].includes(req.method) && ['/', '/index.html'].includes(url.pathname)) {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
         res.end(req.method === 'HEAD' ? undefined : html);
+        return;
+      }
+      if (['GET', 'HEAD'].includes(req.method) && ['/team', '/team.html'].includes(url.pathname)) {
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
+        res.end(req.method === 'HEAD' ? undefined : teamHtml);
         return;
       }
       if (req.method === 'GET' && url.pathname === '/favicon.ico') { res.writeHead(204); res.end(); return; }

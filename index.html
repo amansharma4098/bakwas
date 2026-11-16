@@ -11,6 +11,7 @@
     :root{color-scheme:light dark;--bg:#f6f7f9;--surface:#ffffff;--surface-2:#f9fafb;--border:#e4e7ec;--border-strong:#d0d5dd;--text:#101828;--text-2:#344054;--text-3:#667085;--accent:#2563eb;--accent-soft:#eff4ff;--btn:#2563eb;--btn-hover:#1d4ed8;--down:#d92d20;--down-soft:#fef3f2;--down-border:#fecdca;--ok:#079455;--ok-soft:#ecfdf3;--ok-border:#abefc6;--warn:#dc6803;--warn-soft:#fffaeb;--warn-border:#fedf89;--star:#f59e0b;--shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);--radius:12px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
     @media(prefers-color-scheme:dark){:root{--bg:#0b0f17;--surface:#111827;--surface-2:#0f1622;--border:#1f2937;--border-strong:#374151;--text:#f3f4f6;--text-2:#d0d5dd;--text-3:#98a2b3;--accent:#6b9bff;--accent-soft:#15213b;--down:#f97066;--down-soft:#2a1514;--down-border:#5c211d;--ok:#47cd89;--ok-soft:#0e2a1c;--ok-border:#1b5e3c;--warn:#fdb022;--warn-soft:#2a210d;--warn-border:#5c4510;--shadow:0 1px 3px rgba(0,0,0,.4)}}
     *{box-sizing:border-box}
+    [hidden]{display:none!important}
     html{scroll-behavior:smooth;scroll-padding-top:80px}
     body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
     button,input,textarea{font:inherit;color:inherit}
@@ -177,6 +178,22 @@
     .footer-inner strong{color:var(--text);font-weight:600}
     .footer-inner p:last-child{text-align:right}
 
+    /* Office posters */
+    .wall{margin:8px 0 56px}
+    .wall-head{margin-bottom:24px}
+    .wall-head h2{font-size:26px;font-weight:700;letter-spacing:-.02em}
+    .wall-head p{font-size:14px;color:var(--text-3);margin-top:4px}
+    .posters{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:4px}
+    .poster{margin:0;background:#0c0c0c;padding:14px 14px 20px;border-radius:3px;box-shadow:0 12px 28px rgba(16,24,40,.22);text-align:center;color:#fff;transform:rotate(-1.2deg);transition:transform .2s}
+    .poster:nth-child(2){transform:rotate(.8deg)}
+    .poster:nth-child(3){transform:rotate(-.5deg)}
+    .poster:hover{transform:rotate(0) scale(1.02)}
+    .poster svg{display:block;width:100%;height:auto;border:2px solid #f2f2f2}
+    .p-title{display:block;font:400 26px/1.2 Georgia,"Times New Roman",serif;letter-spacing:.2em;text-transform:uppercase;margin:16px 0 6px}
+    .p-sub{display:block;font-size:13px;line-height:1.5;color:#c9ccd3;padding:0 6px}
+    .mobile-link{display:none;font-size:14px;font-weight:600;color:var(--accent)}
+    @media(max-width:900px){.posters{grid-template-columns:1fr 1fr}.mobile-link{display:inline}}
+    @media(max-width:640px){.posters{grid-template-columns:1fr;max-width:340px;margin:0 auto}}
     @media(max-width:900px){.hero{grid-template-columns:1fr;gap:32px;padding-top:40px}.review-layout{grid-template-columns:1fr}.nav{display:none}.header-inner{justify-content:space-between}}
     @media(max-width:640px){.shell{padding:0 16px}.header-actions .btn{display:none}.pill-text{display:none}h1{font-size:40px}.lead{font-size:16px}.panel-head{display:block;padding:16px}.legend{margin-top:10px}.component,.panel-foot{padding-left:16px;padding-right:16px}.uptime i:nth-child(-n+45){display:none}.timeline{padding:4px 16px 8px}.update{grid-template-columns:1fr;gap:6px}.incident-meta{grid-template-columns:1fr}.incident-meta div{border-right:0;border-bottom:1px solid var(--border);padding:10px 16px}.incident-meta div:last-child{border-bottom:0}.section-heading{display:block}.section-heading>p{text-align:left;margin-top:8px}.review-form{padding:18px}.star-choice{width:38px;height:38px}.footer-inner{display:block;padding:20px 16px}.footer-inner p:last-child{text-align:left;margin-top:6px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
@@ -187,8 +204,8 @@
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#" aria-label="AI Studio status home"><span class="brand-mark" aria-hidden="true">//</span>AI Studio <span class="brand-suffix">Status</span></a>
-      <nav class="nav" aria-label="Sections"><a href="#status">System status</a><a href="#updates">Incident updates</a><a href="#reviews">Reviews</a></nav>
-      <div class="header-actions"><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="#reviews">Leave a review</a></div>
+      <nav class="nav" aria-label="Sections"><a href="#status">System status</a><a href="#updates">Incident updates</a><a href="#reviews">Reviews</a><a href="/team">Team</a></nav>
+      <div class="header-actions"><a class="mobile-link" href="/team">Team</a><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="#reviews">Leave a review</a></div>
     </div>
   </header>
   <main id="main" class="shell">
@@ -256,6 +273,15 @@
         <li class="update"><span class="update-tag tone-down">Identified<span class="update-time">Yesterday</span></span><p>Root cause identified: the server. A follow-up investigation has been added to the next sprint, right after the other follow-up investigations.</p></li>
         <li class="update"><span class="update-tag">Investigating<span class="update-time">Launch day</span></span><p>We are aware that the product does not work. A meeting has been scheduled to discuss scheduling a meeting.</p></li>
       </ol>
+    </section>
+
+    <section class="wall" aria-labelledby="wall-title">
+      <div class="wall-head"><p class="eyebrow">From the office wall</p><h2 id="wall-title">Company values, framed.</h2><p>Printed in-house. The printer is also down, so these took a while.</p></div>
+      <div class="posters">
+        <figure class="poster"><svg viewBox="0 0 200 130" aria-hidden="true"><rect width="200" height="130" fill="#1e3a8a"/><circle cx="168" cy="26" r="12" fill="#fde68a"/><circle cx="173" cy="22" r="11" fill="#1e3a8a"/><rect x="66" y="28" width="68" height="92" rx="5" fill="#cbd5e1"/><rect x="74" y="38" width="52" height="16" rx="2" fill="#334155"/><rect x="74" y="60" width="52" height="16" rx="2" fill="#334155"/><rect x="74" y="82" width="52" height="16" rx="2" fill="#334155"/><circle cx="118" cy="46" r="3" fill="#ef4444"/><circle cx="118" cy="68" r="3" fill="#ef4444"/><circle cx="118" cy="90" r="3" fill="#ef4444"/><text x="138" y="40" fill="#fff" font-family="Georgia,serif" font-size="12">z</text><text x="146" y="28" fill="#fff" font-family="Georgia,serif" font-size="17">z</text><text x="156" y="62" fill="#fff" font-family="Georgia,serif" font-size="22">Z</text></svg><figcaption><span class="p-title">Uptime</span><span class="p-sub">If at first you don't succeed, call it scheduled maintenance.</span></figcaption></figure>
+        <figure class="poster"><svg viewBox="0 0 200 130" aria-hidden="true"><rect width="200" height="130" fill="#065f46"/><circle cx="100" cy="65" r="38" fill="none" stroke="#ecfdf5" stroke-width="5" stroke-dasharray="12 7"/><polygon points="132,40 146,50 128,56" fill="#ecfdf5"/><g fill="#a7f3d0" font-family="ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle"><text x="100" y="20">Q1</text><text x="157" y="69">Q2</text><text x="100" y="122">Q3</text><text x="43" y="69">Q4</text></g><text x="100" y="62" fill="#fff" font-family="ui-monospace,monospace" font-size="8" text-anchor="middle">NEXT</text><text x="100" y="74" fill="#fff" font-family="ui-monospace,monospace" font-size="8" text-anchor="middle">SPRINT</text></svg><figcaption><span class="p-title">Roadmap</span><span class="p-sub">Every journey begins with a single sprint. Then another. Then another.</span></figcaption></figure>
+        <figure class="poster"><svg viewBox="0 0 200 130" aria-hidden="true"><rect width="200" height="130" fill="#7c2d12"/><rect x="40" y="18" width="120" height="100" rx="6" fill="#fff7ed"/><rect x="40" y="18" width="120" height="20" rx="6" fill="#dc2626"/><rect x="40" y="30" width="120" height="8" fill="#dc2626"/><g fill="#fb923c"><rect x="48" y="46" width="30" height="18" rx="2"/><rect x="85" y="46" width="30" height="18" rx="2"/><rect x="122" y="46" width="30" height="18" rx="2"/><rect x="48" y="70" width="30" height="18" rx="2"/><rect x="85" y="70" width="30" height="18" rx="2"/><rect x="122" y="70" width="30" height="18" rx="2"/><rect x="48" y="94" width="30" height="18" rx="2"/><rect x="85" y="94" width="30" height="18" rx="2"/><rect x="122" y="94" width="30" height="18" rx="2"/></g><g fill="#7c2d12" font-family="ui-monospace,monospace" font-size="7" font-weight="700" text-anchor="middle"><text x="63" y="58">MTG</text><text x="100" y="58">MTG</text><text x="137" y="58">MTG</text><text x="63" y="82">MTG</text><text x="100" y="82">SYNC</text><text x="137" y="82">MTG</text><text x="63" y="106">MTG</text><text x="100" y="106">MTG</text><text x="137" y="106">RETRO</text></g></svg><figcaption><span class="p-title">Alignment</span><span class="p-sub">Nothing ships faster than a meeting about shipping.</span></figcaption></figure>
+      </div>
     </section>
 
     <section class="reviews" id="reviews" aria-labelledby="review-heading">
