@@ -29,7 +29,7 @@ export function createApp({
     );
   `);
   const html = readFileSync(resolve(root, 'index.html'));
-  const teamHtml = readFileSync(resolve(root, 'team.html'));
+  const pages = Object.fromEntries(['team', 'clients'].map(name => [name, readFileSync(resolve(root, name + '.html'))]));
   const origin = publicOrigin ? new URL(publicOrigin).origin : null;
   const moderationHash = moderationToken ? hash(moderationToken) : null;
   const limits = new Map();
@@ -98,9 +98,11 @@ export function createApp({
         res.end(req.method === 'HEAD' ? undefined : html);
         return;
       }
-      if (['GET', 'HEAD'].includes(req.method) && ['/team', '/team.html'].includes(url.pathname)) {
+      const pageName = url.pathname.match(/^\/(\w+)(?:\.html)?$/)?.[1];
+      const page = pageName && Object.hasOwn(pages, pageName) ? pages[pageName] : null;
+      if (['GET', 'HEAD'].includes(req.method) && page) {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
-        res.end(req.method === 'HEAD' ? undefined : teamHtml);
+        res.end(req.method === 'HEAD' ? undefined : page);
         return;
       }
       if (req.method === 'GET' && url.pathname === '/favicon.ico') { res.writeHead(204); res.end(); return; }

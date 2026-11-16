@@ -24,6 +24,12 @@
     .skip-link{position:absolute;top:-80px;left:16px;background:var(--btn);color:#fff;padding:10px 14px;border-radius:8px;z-index:20}
     .skip-link:focus{top:12px}
 
+    .announce{background:#0f172a;color:#e2e8f0;font-size:14px}
+    .announce-inner{min-height:44px;display:flex;align-items:center;justify-content:center;gap:12px;padding-top:8px;padding-bottom:8px;text-align:center;flex-wrap:wrap}
+    .announce-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#facc15;color:#0f172a;padding:2px 8px;border-radius:999px}
+    .announce p{font-weight:500}
+    .announce a{color:#93c5fd;font-weight:600;white-space:nowrap}
+    .announce a:hover{color:#fff}
     /* Header */
     .site-header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:saturate(1.6) blur(10px);border-bottom:1px solid var(--border)}
     .header-inner{height:64px;display:flex;align-items:center;gap:32px}
@@ -201,11 +207,12 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announce" role="note"><div class="shell announce-inner"><span class="announce-tag">Note</span><p>We are still finding a problem in the market for our solution.</p><a href="/clients">See who we tried it on <span aria-hidden="true">→</span></a></div></div>
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#" aria-label="AI Studio status home"><span class="brand-mark" aria-hidden="true">//</span>AI Studio <span class="brand-suffix">Status</span></a>
-      <nav class="nav" aria-label="Sections"><a href="#status">System status</a><a href="#updates">Incident updates</a><a href="#reviews">Reviews</a><a href="/team">Team</a></nav>
-      <div class="header-actions"><a class="mobile-link" href="/team">Team</a><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="#reviews">Leave a review</a></div>
+      <nav class="nav" aria-label="Sections"><a href="#status">System status</a><a href="#updates">Incident updates</a><a href="#reviews">Reviews</a><a href="/team">Team</a><a href="/clients">Clients</a></nav>
+      <div class="header-actions"><a class="mobile-link" href="/team">Team</a><a class="mobile-link" href="/clients">Clients</a><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="#reviews">Leave a review</a></div>
     </div>
   </header>
   <main id="main" class="shell">
