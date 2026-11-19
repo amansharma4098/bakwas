@@ -29,7 +29,7 @@ export function createApp({
     );
   `);
   const html = readFileSync(resolve(root, 'index.html'));
-  const pages = Object.fromEntries(['team', 'clients'].map(name => [name, readFileSync(resolve(root, name + '.html'))]));
+  const pages = Object.fromEntries(['team', 'clients', 'products'].map(name => [name, readFileSync(resolve(root, name + '.html'))]));
   const origin = publicOrigin ? new URL(publicOrigin).origin : null;
   const moderationHash = moderationToken ? hash(moderationToken) : null;
   const limits = new Map();

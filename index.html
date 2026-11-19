@@ -202,6 +202,7 @@
     @media(max-width:640px){.posters{grid-template-columns:1fr;max-width:340px;margin:0 auto}}
     @media(max-width:900px){.hero{grid-template-columns:1fr;gap:32px;padding-top:40px}.review-layout{grid-template-columns:1fr}.nav{display:none}.header-inner{justify-content:space-between}}
     @media(max-width:640px){.shell{padding:0 16px}.header-actions .btn{display:none}.pill-text{display:none}h1{font-size:40px}.lead{font-size:16px}.panel-head{display:block;padding:16px}.legend{margin-top:10px}.component,.panel-foot{padding-left:16px;padding-right:16px}.uptime i:nth-child(-n+45){display:none}.timeline{padding:4px 16px 8px}.update{grid-template-columns:1fr;gap:6px}.incident-meta{grid-template-columns:1fr}.incident-meta div{border-right:0;border-bottom:1px solid var(--border);padding:10px 16px}.incident-meta div:last-child{border-bottom:0}.section-heading{display:block}.section-heading>p{text-align:left;margin-top:8px}.review-form{padding:18px}.star-choice{width:38px;height:38px}.footer-inner{display:block;padding:20px 16px}.footer-inner p:last-child{text-align:left;margin-top:6px}}
+    @media(max-width:640px){.badge,.brand-suffix{display:none}.header-inner{gap:12px}.header-actions{gap:14px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
   </style>
 </head>
@@ -211,8 +212,8 @@
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#" aria-label="AI Studio status home"><span class="brand-mark" aria-hidden="true">//</span>AI Studio <span class="brand-suffix">Status</span></a>
-      <nav class="nav" aria-label="Sections"><a href="#status">System status</a><a href="#updates">Incident updates</a><a href="#reviews">Reviews</a><a href="/team">Team</a><a href="/clients">Clients</a></nav>
-      <div class="header-actions"><a class="mobile-link" href="/team">Team</a><a class="mobile-link" href="/clients">Clients</a><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="#reviews">Leave a review</a></div>
+      <nav class="nav" aria-label="Sections"><a href="#status">System status</a><a href="#updates">Incident updates</a><a href="#reviews">Reviews</a><a href="/products">Products</a><a href="/team">Team</a><a href="/clients">Clients</a></nav>
+      <div class="header-actions"><a class="mobile-link" href="/products">Products</a><a class="mobile-link" href="/team">Team</a><a class="mobile-link" href="/clients">Clients</a><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="#reviews">Leave a review</a></div>
     </div>
   </header>
   <main id="main" class="shell">
@@ -221,7 +222,7 @@
         <span class="status-pill"><span class="status-dot pulse" aria-hidden="true"></span>Major outage <span class="pill-text">· Permanently experiencing temporary issues</span></span>
         <h1 id="hero-title">We're down.<br><span class="accent">Again.</span></h1>
         <p class="lead">If you find us working, <strong>you're lucky.</strong> Take a screenshot. Nobody will believe you.</p>
-        <p class="fine-print">We're redefining uptime by not having any. Our team is actively scheduling a meeting about it.</p>
+        <p class="fine-print">A fake product with a very real invoice. We're redefining uptime by not having any.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" id="luckButton" type="button"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v2.5H11"/></svg><span id="luckLabel">Try your luck</span></button>
           <a class="btn btn-secondary" href="#reviews">Roast us anonymously</a>

@@ -1,7 +1,7 @@
 import { mkdir, copyFile, writeFile } from 'node:fs/promises';
 const dist = new URL('../dist/', import.meta.url);
 await mkdir(dist, { recursive: true });
-for (const page of ['index.html', 'team.html', 'clients.html']) await copyFile(new URL('../' + page, import.meta.url), new URL(page, dist));
+for (const page of ['index.html', 'team.html', 'clients.html', 'products.html']) await copyFile(new URL('../' + page, import.meta.url), new URL(page, dist));
 await writeFile(new URL('_headers', dist), `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer

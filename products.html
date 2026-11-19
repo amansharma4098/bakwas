@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="AI Studio products, honestly reviewed: AI Studio and ITSM, and what to use instead. Unofficial parody and opinion.">
+  <title>Products · AI Studio</title>
+  <style>
+    :root{color-scheme:light dark;--on-btn:#0b0b0b;--nav-bg:#fbfaf6;--pill:#ecebe7;--band:#eae8e1;--bg:#f5f3ee;--surface:#ffffff;--surface-2:#fbfaf6;--border:#e0ded9;--border-strong:#d0cfcb;--text:#0b0b0b;--text-2:#3a3a3a;--text-3:#767676;--accent:#b76524;--accent-soft:#fbeee2;--btn:#ed8532;--btn-hover:#e07524;--down:#d92d20;--down-soft:#fef3f2;--down-border:#fecdca;--ok:#079455;--ok-soft:#ecfdf3;--ok-border:#abefc6;--warn:#dc6803;--warn-soft:#fffaeb;--warn-border:#fedf89;--shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);--radius:12px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    @media(prefers-color-scheme:dark){:root{--nav-bg:#161513;--pill:#2a2926;--band:#171614;--bg:#121110;--surface:#1b1a18;--surface-2:#22211e;--border:#2e2c29;--border-strong:#3d3b37;--text:#f5f3ee;--text-2:#d6d3cc;--text-3:#a19d94;--accent:#f0a060;--accent-soft:#2a1e14;--down:#f97066;--down-soft:#2a1514;--down-border:#5c211d;--ok:#47cd89;--ok-soft:#0e2a1c;--ok-border:#1b5e3c;--warn:#fdb022;--warn-soft:#2a210d;--warn-border:#5c4510;--shadow:0 1px 3px rgba(0,0,0,.4)}}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+    h1,h2,h3,p{margin:0}
+    .shell{max-width:1120px;margin:0 auto;padding:0 24px}
+    .skip-link{position:absolute;top:-80px;left:16px;background:var(--btn);color:var(--on-btn);padding:10px 14px;border-radius:8px;z-index:20}
+    .skip-link:focus{top:12px}
+    .site-header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--nav-bg) 90%,transparent);backdrop-filter:saturate(1.6) blur(10px);border-bottom:1px solid var(--border)}
+    .header-inner{height:64px;display:flex;align-items:center;gap:32px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.02em}
+    .brand-mark{width:28px;height:28px;border-radius:8px;background:var(--btn);color:var(--on-btn);display:grid;place-items:center;font:600 13px var(--mono);letter-spacing:-2px}
+    .brand-suffix{color:var(--text-3);font-weight:500}
+    .nav{display:flex;gap:4px;margin-right:auto}
+    .nav a{padding:6px 10px;border-radius:8px;font-size:14px;color:var(--text-3);font-weight:500}
+    .nav a:hover,.nav a[aria-current]{color:var(--text);background:var(--pill)}
+    .header-actions{display:flex;align-items:center;gap:12px}
+    .mobile-link{display:none;font-size:14px;font-weight:600;color:var(--accent)}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;border:1px solid var(--border);color:var(--text-3);background:var(--surface);white-space:nowrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid transparent;transition:background .15s;white-space:nowrap}
+    .btn-primary{background:var(--btn);color:var(--on-btn);box-shadow:0 1px 2px rgba(16,24,40,.1)}
+    .btn-primary:hover{background:var(--btn-hover)}
+    .btn-secondary{background:var(--surface);border-color:var(--border-strong);color:var(--text-2)}
+    .btn-secondary:hover{background:var(--surface-2)}
+    .btn-sm{height:34px;padding:0 12px;font-size:13px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .eyebrow{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px}
+
+    /* Hero + stats */
+    .hero{padding:64px 0 40px;max-width:760px}
+    h1{font-size:clamp(38px,5vw,54px);line-height:1.08;letter-spacing:-.035em;font-weight:700;margin-bottom:18px}
+    h1 .accent{color:var(--accent);font-style:italic}
+    .lead{font-size:18px;color:var(--text-2)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);margin:0 0 56px;overflow:hidden}
+    .stat{padding:20px 24px;border-right:1px solid var(--border)}
+    .stat:last-child{border-right:0}
+    .stat dt{font-size:13px;color:var(--text-3)}
+    .stat dd{margin:4px 0 0;font-size:26px;font-weight:700;letter-spacing:-.02em}
+    .stat dd small{display:block;font-size:12px;font-weight:500;color:var(--text-3);letter-spacing:0}
+
+    /* Sections */
+    .block{margin-bottom:56px}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:20px}
+    h2{font-size:26px;font-weight:700;letter-spacing:-.02em}
+    .section-head>p{font-size:14px;color:var(--text-3);max-width:380px;text-align:right}
+
+    /* Funnel */
+    .funnel{padding:12px 24px}
+    .funnel-row{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr) 64px;gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+    .funnel-row:last-child{border-bottom:0}
+    .funnel-label{font-size:14px;font-weight:600}
+    .funnel-label small{display:block;font-size:12px;font-weight:400;color:var(--text-3)}
+    .funnel-track{height:28px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);overflow:hidden}
+    .funnel-track span{display:block;height:100%;width:var(--w);background:var(--fill,var(--accent));border-radius:5px}
+    .funnel-track .unknown{background:repeating-linear-gradient(45deg,var(--border-strong) 0 6px,transparent 6px 12px)}
+    .funnel-value{font-size:16px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+
+    /* Clients */
+    .grid{display:grid;gap:16px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .client{padding:22px;display:flex;flex-direction:column}
+    .client-top{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:12px;align-items:center;margin-bottom:14px}
+    .logo{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--border);color:var(--text-3);flex:none}
+    .logo svg{width:22px;height:22px}
+    .client h3{font-size:16px;line-height:1.3}
+    .since{font-size:12px;color:var(--text-3)}
+    .risk{grid-column:2;justify-self:start;margin-top:6px;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid}
+    .risk.high{color:var(--down);background:var(--down-soft);border-color:var(--down-border)}
+    .risk.med{color:var(--warn);background:var(--warn-soft);border-color:var(--warn-border)}
+    .risk.low{color:var(--ok);background:var(--ok-soft);border-color:var(--ok-border)}
+    .client p{font-size:14px;color:var(--text-2)}
+    .mood{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:16px;font-size:12px;color:var(--text-3)}
+    .mood::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--m,var(--down))}
+    .client.more{border-style:dashed;box-shadow:none;background:transparent;justify-content:center}
+    .client.more h3{margin-bottom:6px}
+    .callout{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:14px 18px;border-radius:var(--radius);font-size:14px;background:var(--surface);border:1px dashed var(--border-strong);color:var(--text-2)}
+    .callout strong{color:var(--text)}
+
+    /* Process */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:step}
+    .step{padding:24px;position:relative}
+    .step-num{font:700 13px var(--mono);color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:6px;display:inline-block;margin-bottom:14px}
+    .step h3{font-size:17px;margin-bottom:6px}
+    .step p{font-size:14px;color:var(--text-2)}
+    .step:last-child .step-num{color:var(--down);background:var(--down-soft)}
+
+    /* Before / after */
+    .compare{overflow:hidden}
+    .compare table{width:100%;border-collapse:collapse;font-size:14px}
+    .compare th,.compare td{text-align:left;padding:14px 24px;border-bottom:1px solid var(--border);width:50%;vertical-align:top}
+    .compare th{font-size:13px;font-weight:600;background:var(--surface-2)}
+    .compare th:first-child{color:var(--ok)}
+    .compare th:last-child{color:var(--down)}
+    .compare tr:last-child td{border-bottom:0}
+    .compare td:first-child{color:var(--text-3);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--text-3) 50%,transparent)}
+    .compare td:last-child{font-weight:500}
+
+    /* Products */
+    .products{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .product{padding:24px;display:flex;flex-direction:column}
+    .product-head{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:14px;align-items:center;margin-bottom:16px}
+    .product-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+    .product-icon svg{width:24px;height:24px}
+    .product-tag{font-size:12px;font-weight:600;color:var(--text-3)}
+    .product h3{font-size:22px;letter-spacing:-.02em}
+    .product .risk{grid-column:auto;margin:0}
+    .product-pitch{color:var(--text-2);margin-bottom:16px}
+    .checklist{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:8px;font-size:14px;color:var(--text-2)}
+    .checklist li{display:flex;gap:10px}
+    .x{color:var(--down);font-weight:700;flex:none}
+    .advice{margin-top:auto;padding:14px 16px;border-radius:10px;background:var(--ok-soft);border:1px solid var(--ok-border);font-size:14px;color:var(--text-2)}
+    .advice strong{display:block;color:var(--ok);font-size:13px;margin-bottom:2px}
+    .vs{overflow:hidden}
+    .vs table{width:100%;border-collapse:collapse;font-size:14px}
+    .vs th,.vs td{text-align:left;padding:14px 24px;border-bottom:1px solid var(--border)}
+    .vs thead th{font-size:13px;background:var(--surface-2)}
+    .vs thead th:nth-child(2){color:var(--ok)}
+    .vs thead th:nth-child(3){color:var(--down)}
+    .vs tbody th{font-weight:600;width:18%}
+    .vs tbody td:last-child{color:var(--text-3)}
+    .vs tr:last-child th,.vs tr:last-child td{border-bottom:0}
+    .changelog{list-style:none;margin:0;padding:8px 24px}
+    .changelog li{display:flex;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)}
+    .changelog li:last-child{border-bottom:0}
+    .ver{font:600 13px var(--mono);color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px;flex:none}
+    .changelog p{font-size:14px;color:var(--text-2)}
+    @media(max-width:760px){.products{grid-template-columns:1fr}.product-head{grid-template-columns:48px minmax(0,1fr)}.product .risk{grid-column:2;justify-self:start}.vs th,.vs td{padding:12px 14px}.changelog{padding:4px 16px}}
+    /* Logo wall */
+    .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+    .logo-tile{height:84px;border:1px dashed var(--border-strong);border-radius:10px;display:grid;place-items:center;text-align:center;padding:8px;font-size:12px;color:var(--text-3);line-height:1.4}
+
+    /* Testimonials */
+    .quote{margin:0;padding:24px;display:flex;flex-direction:column}
+    .quote blockquote{margin:0 0 18px;font-size:16px;line-height:1.55;font-weight:500;letter-spacing:-.01em}
+    .quote blockquote::before{content:"“";display:block;font:700 40px/0.8 Georgia,serif;color:var(--accent);margin-bottom:8px}
+    .quote figcaption{margin-top:auto;font-size:13px;color:var(--text-3)}
+    .quote figcaption strong{display:block;color:var(--text);font-weight:600}
+
+    /* CTA + footer */
+    .cta{padding:32px;display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:56px}
+    .cta h2{font-size:22px;margin-bottom:6px}
+    .cta p{color:var(--text-2)}
+    .site-footer{border-top:1px solid var(--border);background:var(--band)}
+    .footer-inner{display:flex;justify-content:space-between;gap:24px;padding:24px;font-size:13px;color:var(--text-3)}
+    .footer-inner strong{color:var(--text);font-weight:600}
+    .footer-inner p{margin:0}
+    .footer-inner p:last-child{text-align:right}
+
+    @media(max-width:960px){.nav{display:none}.mobile-link{display:inline}.header-inner{justify-content:space-between}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--border)}.grid-3,.steps{grid-template-columns:1fr 1fr}.logos{grid-template-columns:repeat(3,1fr)}.funnel-row{grid-template-columns:1fr 56px;gap:8px 16px}.funnel-track{grid-column:1/-1;grid-row:2}}
+    @media(max-width:640px){.shell{padding:0 16px}.header-actions .btn,.badge{display:none}.hero{padding:40px 0 28px}.lead{font-size:16px}.stat{padding:16px}.stat dd{font-size:22px}.section-head{display:block}.section-head>p{text-align:left;margin-top:6px}.grid-3,.steps{grid-template-columns:1fr}.logos{grid-template-columns:1fr 1fr}.funnel{padding:4px 16px}.compare th,.compare td{padding:12px 14px}.cta{display:block;padding:24px}.cta .btn{margin-top:16px}.footer-inner{display:block;padding:20px 16px}.footer-inner p:last-child{text-align:left;margin-top:6px}}
+    @media(max-width:640px){.badge,.brand-suffix{display:none}.header-inner{gap:12px}.header-actions{gap:14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="AI Studio status home"><span class="brand-mark" aria-hidden="true">//</span>AI Studio <span class="brand-suffix">Status</span></a>
+      <nav class="nav" aria-label="Pages"><a href="/#status">System status</a><a href="/#updates">Incident updates</a><a href="/#reviews">Reviews</a><a href="/products" aria-current="page">Products</a><a href="/team">Team</a><a href="/clients">Clients</a></nav>
+      <div class="header-actions"><a class="mobile-link" href="/">Status</a><a class="mobile-link" href="/team">Team</a><a class="mobile-link" href="/clients">Clients</a><span class="badge">Unofficial parody</span><a class="btn btn-primary btn-sm" href="/#reviews">Leave a review</a></div>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Products</p>
+      <h1 id="hero-title">Two products.<br><span class="accent">Zero originals.</span></h1>
+      <p class="lead">A fake product suite with very real enterprise invoices. Everything below sits on top of something you could buy directly: cheaper, better documented and, crucially, switched on.</p>
+    </section>
+
+    <section class="block" aria-labelledby="suite-title">
+      <div class="section-head"><div><p class="eyebrow">The suite</p><h2 id="suite-title">What we sell</h2></div><p>In our honest opinion. Which is more honesty than the sales deck.</p></div>
+      <div class="products">
+        <article class="card product">
+          <div class="product-head"><span class="product-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></span><div><p class="product-tag">Flagship</p><h3>AI Studio</h3></div><span class="risk high">Status: down</span></div>
+          <p class="product-pitch">Our “proprietary” AI platform: a login page, a chat box and a monthly invoice, wrapped around someone else's models.</p>
+          <ul class="checklist">
+            <li><span class="x" aria-hidden="true">✕</span>A chat box that calls another company's API</li>
+            <li><span class="x" aria-hidden="true">✕</span>A dashboard about the chat box</li>
+            <li><span class="x" aria-hidden="true">✕</span>Enterprise pricing for a demo that works once</li>
+            <li><span class="x" aria-hidden="true">✕</span>An outage page. You're on it.</li>
+          </ul>
+          <div class="advice"><strong>Honest recommendation</strong>Use Azure AI Foundry. Same kind of models, a real SLA, proper documentation, and it is actually up.</div>
+        </article>
+        <article class="card product">
+          <div class="product-head"><span class="product-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg></span><div><p class="product-tag">IT service management</p><h3>ITSM</h3></div><span class="risk med">Status: borrowed</span></div>
+          <p class="product-pitch">IT service management, “reimagined.” Every feature was inspired by an existing ITSM platform. Very closely inspired.</p>
+          <ul class="checklist">
+            <li><span class="x" aria-hidden="true">✕</span>Tickets, plus a ticket about the tickets</li>
+            <li><span class="x" aria-hidden="true">✕</span>An SLA that nobody measures</li>
+            <li><span class="x" aria-hidden="true">✕</span>A roadmap that is someone else's release notes</li>
+            <li><span class="x" aria-hidden="true">✕</span>An AI assistant that tells you to raise a ticket</li>
+          </ul>
+          <div class="advice"><strong>Honest recommendation</strong>Use an established ITSM platform, or build on Azure. They had a ten-year head start, and the features that were “inspired” still work better at the source.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="vs-title">
+      <div class="section-head"><div><p class="eyebrow">Comparison</p><h2 id="vs-title">AI Studio vs Azure AI Foundry</h2></div><p>We made this table ourselves. It still doesn't go well for us.</p></div>
+      <div class="card vs">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Azure AI Foundry</th><th scope="col">AI Studio</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Uptime</th><td>Backed by an SLA</td><td>Backed by this status page</td></tr>
+            <tr><th scope="row">Models</th><td>A large, documented catalogue</td><td>Whatever the API key allows this month</td></tr>
+            <tr><th scope="row">Support</th><td>Documented and staffed</td><td>Ask the CTO, who asks Claude</td></tr>
+            <tr><th scope="row">Pricing</th><td>Pay for what you use</td><td>Pay for what we promised</td></tr>
+            <tr><th scope="row">Origin</th><td>Built by them</td><td>Built on them</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="log-title">
+      <div class="section-head"><div><p class="eyebrow">ITSM changelog</p><h2 id="log-title">Release notes</h2></div><p>Every release is a major version. None of them are ours.</p></div>
+      <ol class="card changelog">
+        <li><span class="ver">v2.1</span><p>Fixed a long-standing bug by removing the feature it was in.</p></li>
+        <li><span class="ver">v2.0</span><p>Added AI. The AI reads your ticket and suggests you raise a ticket.</p></li>
+        <li><span class="ver">v1.2</span><p>Renamed “Incidents” to “Opportunities.” Incident count is down 100%.</p></li>
+        <li><span class="ver">v1.1</span><p>Dark mode. Mostly so nobody can see the screenshots we worked from.</p></li>
+        <li><span class="ver">v1.0</span><p>Launched ITSM. For the full feature list, see the original vendor's website.</p></li>
+      </ol>
+    </section>
+
+    <section class="card cta" aria-labelledby="cta-title">
+      <div><h2 id="cta-title">Our honest advice.</h2><p>Need AI? Use Azure AI Foundry. Need ITSM? Use a proven ITSM platform. Need an example of how not to do it? You're already here.</p></div>
+      <a class="btn btn-primary" href="/#status">Check our status anyway</a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><p><strong>AI Studio™</strong> · All systems nominal. Except the systems.</p><p>Unofficial satire and opinion. Not affiliated with the company or Microsoft.<br>Product names are used for comparison only.</p></div></footer>
+</body>
+</html>
